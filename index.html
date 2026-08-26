@@ -16,8 +16,8 @@
     .notice { background:#fff7ed; border:1px solid #fdba74; padding:13px 15px; border-radius:12px; margin-bottom:14px; }
     .walkbox { background:#ecfdf5; border:1px solid #6ee7b7; border-radius:14px; padding:13px 15px; margin-bottom:14px; }
     .walkbox strong { color:#065f46; }
-    .walksteps { display:flex; flex-wrap:wrap; gap:6px; margin-top:9px; align-items:center; }
-    .walkstep { background:white; border:1px solid #a7d8c9; border-radius:9px; padding:6px 8px; font-size:13px; }
+    .walksteps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin-top:9px; }
+    .walkstep { background:white; border:1px solid #a7d8c9; border-radius:9px; padding:7px 8px; font-size:13px; }
     .arrow { color:#0b765d; font-weight:800; }
     .controls { display:flex; gap:8px; flex-wrap:wrap; margin:0 0 14px; }
     button { border:1px solid #b9c8d3; background:white; color:var(--ink); border-radius:999px; padding:8px 13px; cursor:pointer; font-weight:650; }
@@ -30,6 +30,14 @@
     .metric strong { font-size:22px; display:block; }
     .card { background:white; border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:10px; box-shadow:0 3px 10px #1632470d; }
     .card h2 { font-size:18px; margin:0 0 5px; }
+    .place-table,.evidence-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .place-table th,.place-table td,.evidence-table th,.evidence-table td { text-align:left; vertical-align:top; padding:7px 6px; border-bottom:1px solid var(--line); line-height:1.45; }
+    .place-table th { width:68px; color:var(--muted); font-weight:650; }
+    .evidence-table th { background:#f3f7f9; color:#365467; }
+    .evidence-table td:first-child { font-weight:700; }
+    .strong-ok { color:#08775b; font-weight:750; }
+    .strong-warn { color:#b45309; font-weight:750; }
+    .strong-no { color:#b42318; font-weight:750; }
     .meta { color:var(--muted); font-size:13px; margin:3px 0; }
     .price { font-weight:750; color:#075f4b; margin:7px 0; }
     .tags { display:flex; flex-wrap:wrap; gap:5px; margin:8px 0; }
@@ -45,7 +53,8 @@
     details.evidence h3 { margin:16px 0 6px; font-size:16px; }
     details.evidence li { margin:7px 0; line-height:1.5; }
     .hidden { display:none !important; }
-    @media(max-width:900px){ .layout{grid-template-columns:1fr}.panel,#map{height:auto;min-height:520px}.summary{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:900px){ .layout{grid-template-columns:1fr}.panel{height:auto;min-height:0}.layout #map{height:46vh;min-height:330px}.summary{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:520px){ header{padding:15px 14px}header p{font-size:13px}main{padding:10px}.notice,.walkbox{padding:10px 11px}.walksteps{grid-template-columns:1fr 1fr}.walkstep{font-size:12px}.arrow{display:none}.controls{gap:6px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:3px}button{white-space:nowrap;padding:7px 10px;font-size:12px}.layout{gap:10px}.layout #map{height:38vh;min-height:285px;border-radius:12px}.summary{gap:5px}.metric{padding:7px;font-size:11px}.metric strong{font-size:18px}.card{padding:10px;margin-bottom:8px}.card h2{font-size:16px}.place-table{font-size:12px}.place-table th{width:58px}.place-table th,.place-table td{padding:6px 4px}.actions a{padding:7px 8px;font-size:12px}details.evidence{padding:10px;margin-top:10px}.evidence-scroll{overflow-x:auto}.evidence-table{min-width:620px;font-size:12px}}
   </style>
 </head>
 <body>
@@ -54,10 +63,10 @@
   <p>把「實體停車場」與 Google Maps 重複名稱拆清楚；點標記可導航、打電話或查看承租方式。</p>
 </header>
 <main>
-  <div class="notice"><strong>先看結論：</strong>主巡查路線約 2.1 公里、Google 步行約 31 分鐘；現場逐一看入口、遮雨、空位及月租公告，建議預留 60–75 分鐘。暐順經貿官方列一般機車月票 900 元；國泰世興月票明定僅限園區員工。</div>
+  <div class="notice"><strong>先看結論：</strong><span class="strong-ok">主線 9 個實體巡查點</span>，約 2.2 公里／32 分；台大生醫是第 10 個延伸點。網路名稱比實體入口多，因為 P1/P2、6+/AJ/暐順、正捷/五都二有別名或共址。</div>
   <div class="walkbox">
     <strong>建議步行順序（高鐵站出發、繞一圈回站）</strong>
-    <div class="walksteps"><span class="walkstep">起點 高鐵站</span><span class="arrow">→</span><span class="walkstep">1 P2</span><span class="arrow">→</span><span class="walkstep">2 暐順／6+</span><span class="arrow">→</span><span class="walkstep">3 六家站待辨識入口</span><span class="arrow">→</span><span class="walkstep">4 五都二／正捷</span><span class="arrow">→</span><span class="walkstep">5 五都一</span><span class="arrow">→</span><span class="walkstep">6 國泰世興</span><span class="arrow">→</span><span class="walkstep">7 P1</span><span class="arrow">→</span><span class="walkstep">回高鐵站</span></div>
+    <div class="walksteps"><span class="walkstep">起點｜高鐵站</span><span class="walkstep">1｜P2 嘟嘟房</span><span class="walkstep">2｜暐順／6+／AJ</span><span class="walkstep">3｜六家站入口</span><span class="walkstep">4｜五都二／正捷</span><span class="walkstep">5｜城市高鐵二</span><span class="walkstep">6｜城市高鐵一</span><span class="walkstep">7｜五都一</span><span class="walkstep">8｜國泰世興</span><span class="walkstep">9｜P1 嘟嘟房</span><span class="walkstep">終點｜高鐵站</span><span class="walkstep">延伸｜台大生醫</span></div>
     <div class="actions"><a id="fullWalkRoute" target="_blank">開啟 Google 完整步行路線</a></div>
   </div>
   <div class="controls" id="filters">
@@ -76,8 +85,8 @@
     <section class="panel">
       <div class="summary">
         <div class="metric"><strong id="shownCount">0</strong>巡查站點</div>
-        <div class="metric"><strong>2.1 km</strong>主路線</div>
-        <div class="metric"><strong>31 分</strong>純步行</div>
+        <div class="metric"><strong>2.2 km</strong>主路線</div>
+        <div class="metric"><strong>32 分</strong>純步行</div>
       </div>
       <div id="cards"></div>
       <p class="foot">資料整理日：2026-08-26。這是截至整理日可找到、且與機車停車直接相關的官方、業者、地圖與社群資料；網路內容仍可能遺漏或下架，費率、月租名額與資格以現場及業者回覆為準。城市車旅暐順／6+ 是同一棟實體地點；正捷與五都二站同址且使用相同電話，因此不另灌水計為獨立停車場。五都三、五、六站官方費率頁未列機車位，已排除。</p>
@@ -86,43 +95,50 @@
   <details class="evidence" open>
     <summary>網路完整資料、重複名稱與尚未證實項目</summary>
     <h3>目前官方／業者資料</h3>
-    <ul>
-      <li><strong>高鐵嘟嘟房：</strong>高鐵官方列機車每小時 10 元、每日上限 100 元、前 30 分鐘免費；新竹縣資料列 917 格、計時及月租。Google Maps 的「高鐵新竹4站」是 P2 機車場別名，「高鐵新竹5站」是 P1 機車場別名；一般「1站／2站」多指汽車場。</li>
-      <li><strong>五都一／二站：</strong>官方均列機車每小時 10 元、平日上限 60 元、假日上限 80 元；本場頁面沒有列月租。正捷與五都二站同址、同電話。</li>
-      <li><strong>城市車旅暐順／6+：</strong>官方目前為每小時 20 元、每日上限 100 元、機車月票 900 元；6+ 官方確認 B1 為機車場。</li>
-      <li><strong>城市車旅國泰世興：</strong>官方目前臨停每次 50 元；月票季繳 900 元，明定僅限園區員工。</li>
-      <li><strong>路邊收費格：</strong>公告路段包含高鐵二／七／八路、高鐵七路東一／二巷、復興二路、復興三路二段、嘉豐十一路一段、嘉祥六／七街；週一至六 08:00–20:00 每小時 10 元、每次當日最高 30 元，星期日及公告假日免費。只有畫設機車格且有收費牌的位置能停。</li>
-      <li><strong>台大生醫：</strong>官方院內機車場 488 格、每次 20 元、隔日累加；官方沒有列一般機車月租。</li>
-    </ul>
+    <div class="evidence-scroll"><table class="evidence-table"><thead><tr><th>地點／名稱</th><th>目前可確認</th><th>別名／限制</th></tr></thead><tbody>
+      <tr><td>嘟嘟房 P1／P2</td><td><span class="strong-ok">10 元／時；上限 100；前 30 分免費</span><br>縣資料：917 格、計時／月租</td><td>P2＝Google「高鐵新竹4站」；P1＝「5站」。月租資格／價格未公開</td></tr>
+      <tr><td>五都一／二</td><td><span class="strong-ok">10 元／時；平日上限 60、假日 80</span></td><td>正捷＝五都二共址；官方未列月租</td></tr>
+      <tr><td>暐順／6+／AJ</td><td><span class="strong-ok">20 元／時；上限 100；官方月票 900</span></td><td>同棟、同一地下機車場；2024 社群曾問到員工限定，現行官方頁未寫限制，需確認名額</td></tr>
+      <tr><td>國泰世興</td><td>50 元／次；季繳 900</td><td><span class="strong-no">官方明定僅園區員工</span></td></tr>
+      <tr><td>城市高鐵一</td><td>合作清單明列<span class="strong-warn">含機車位</span></td><td>現行機車費率／月租未公開</td></tr>
+      <tr><td>城市高鐵二</td><td>官方目前只列汽車</td><td>2025 社群回報機車 50／日；<span class="strong-warn">現場核對</span></td></tr>
+      <tr><td>路邊收費格</td><td>一至六 08–20 時，10／時，上限 30；日／公告假日免費</td><td>只限有畫格、有收費牌路段</td></tr>
+      <tr><td>台大生醫</td><td>488 格；20／次；隔日累加</td><td>官方未列一般月租；主線外延伸</td></tr>
+    </tbody></table></div>
     <h3>社群資料（可能過時，保留供你現場核對）</h3>
-    <ul>
-      <li>2020：6+ B1 曾被回報月租 500 元；出口旁鐵皮車棚曾回報月租 600 元，但同一討論也有人表示當時停止受理月租。</li>
-      <li>2023：6+ 曾回報月租 700 元；旁邊鐵皮棚約 800 元且容易擁擠。週末曾有人回報 6+ 滿位或只收月租。</li>
-      <li>2024：使用者詢問 6+、城市車旅國泰與暐順時，三者都曾回覆限同棟上班者；這與 2026 城市車旅暐順官方頁未列限制有落差，現場應再次確認。</li>
-      <li>2025：有人回報高鐵五路城市車旅機車 50 元／日、一車一格；但城市車旅目前「新竹高鐵二站」官方頁只列汽車，需實地確認是否仍有機車區。位置在文興路二段／高鐵五路，巡查五都一站後可順路多走約 3–5 分鐘查看。</li>
-      <li>免費候選只屬社群回報：台大生醫正門對面科管局機車場、水圳森林公園周邊、高鐵九路、六家高中一帶；沒有查到保證全天、可長期停放的官方說明。</li>
-    </ul>
+    <div class="evidence-scroll"><table class="evidence-table"><thead><tr><th>年份</th><th>網友回報</th><th>現在怎麼看</th></tr></thead><tbody>
+      <tr><td>2020</td><td>6+ B1 月租 500；旁邊鐵皮棚 600；同串也有人說暫停月租</td><td>歷史價，不可直接採信</td></tr>
+      <tr><td>2023</td><td>6+ 約 700；鐵皮棚約 800且擁擠；週末可能滿位／只收月租</td><td>現場看棚是否仍營運</td></tr>
+      <tr><td>2024</td><td>6+、國泰、暐順都曾回覆同棟員工限定；台大月租 1,500</td><td>國泰限制已獲官方確認；暐順現行官網未寫限制，需問</td></tr>
+      <tr><td>2025</td><td>高鐵五路城市車旅機車 50／日、一車一格</td><td>現行官方只列汽車，列入第 5 點現勘</td></tr>
+      <tr><td>免費候選</td><td>科管局機車區、水圳森林公園、高鐵九路、六家高中</td><td><span class="strong-warn">沒有查到保證全天／可長停的官方說明</span></td></tr>
+    </tbody></table></div>
     <h3>網路有名稱，但不要當成已確認機車場</h3>
-    <ul>
-      <li>五都新竹三、五、六站：官方費率只列汽車，沒有機車位。</li>
-      <li>城市車旅竹北高鐵停六、高鐵停九、Times 嘉豐八街：有停車場列表，但沒有找到可停一般機車及月租的可靠資料。</li>
-      <li>城市車旅新竹高鐵一／二站：Google Maps 有場址；官方目前新竹高鐵二站只列汽車且未開放月票，機車資訊僅見 2025 社群回報，列為現場核對項目。</li>
-    </ul>
-    <div class="actions"><a href="https://www.thsrc.com.tw/ArticleContent/a7a04c89-900b-4798-95a3-c01c455622f4" target="_blank">高鐵官方</a><a href="https://www.hsinchu.gov.tw/OpenDataDetail.aspx?n=902&s=271" target="_blank">新竹縣停車場資料</a><a href="https://cityparking888.com/parking.php?area=287&city=64&country=1" target="_blank">城市車旅官方</a><a href="https://www.parkingnow168.com/product.php?cid=48&lang=tw&tb=1" target="_blank">五都費率</a><a href="https://hcpark.hchg.gov.tw/web/News/Detail?guid=8d6e29cd-b0ba-4140-8c45-a433f8a605b4" target="_blank">路邊格公告</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1588939880.A.C4D.html" target="_blank">2020 月租討論</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1698228292.A.062.html" target="_blank">2023 月租討論</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1694857934.A.7CC.html" target="_blank">2023 免費／遮雨討論</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1717728272.A.F4E.html" target="_blank">2024 社群詢問</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1748443783.A.A8E.html" target="_blank">2025 免費／高鐵五路討論</a></div>
+    <div class="evidence-scroll"><table class="evidence-table"><thead><tr><th>網路名稱</th><th>判定</th><th>是否排入步行主線</th></tr></thead><tbody>
+      <tr><td>高鐵新竹4／5站</td><td>P2／P1 機車場的 Google 別名</td><td>已合併，不重複算</td></tr>
+      <tr><td>高鐵新竹1／2站</td><td>常見同名結果多為嘟嘟房汽車場</td><td>不另算機車場</td></tr>
+      <tr><td>6+ Plaza／AJ Hotel／暐順</td><td>同棟 B1 機車場</td><td>已合併為第 2 點</td></tr>
+      <tr><td>正捷／五都二</td><td>同址、同電話</td><td>已合併為第 4 點</td></tr>
+      <tr><td>五都三／五／六</td><td>官方費率頁只列汽車</td><td><span class="strong-no">不列機車主線</span></td></tr>
+      <tr><td>助安168 新竹高鐵</td><td>可找到汽車場名稱，未找到一般機車可靠資料</td><td><span class="strong-no">不列機車主線</span></td></tr>
+      <tr><td>城市高鐵停六／停九、Times 嘉豐八街</td><td>可找到停車場列表，未找到一般機車／月租可靠資料</td><td>不列主線</td></tr>
+      <tr><td>生醫園區中央廊帶地下場</td><td>業者列汽車、電動車，未列機車</td><td>不列主線</td></tr>
+    </tbody></table></div>
+    <div class="actions"><a href="https://www.thsrc.com.tw/ArticleContent/a7a04c89-900b-4798-95a3-c01c455622f4" target="_blank">高鐵官方</a><a href="https://www.hsinchu.gov.tw/OpenDataDetail.aspx?n=902&s=271" target="_blank">縣停車場資料</a><a href="https://cityparking888.com/parking.php?area=287&city=64&country=1" target="_blank">城市車旅</a><a href="https://www.parkingnow168.com/product.php?cid=48&lang=tw&tb=1" target="_blank">五都</a><a href="https://help.autopass.xyz/parking/common-issue-1/un" target="_blank">高鐵一含機車位</a><a href="https://hcpark.hchg.gov.tw/web/News/Detail?guid=8d6e29cd-b0ba-4140-8c45-a433f8a605b4" target="_blank">路邊格</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1588939880.A.C4D.html" target="_blank">2020</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1698228292.A.062.html" target="_blank">2023 月租</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1694857934.A.7CC.html" target="_blank">2023 免費</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1717728272.A.F4E.html" target="_blank">2024</a><a href="https://www.ptt.cc/bbs/Hsinchu/M.1748443783.A.A8E.html" target="_blank">2025</a></div>
   </details>
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const places = [
-  {id:1,routeOrder:7,leg:'國泰世興 → P1：220 公尺／3 分',road:'沿高鐵東二路返回站體',station:'高鐵／六家',name:'嘟嘟房 高鐵新竹 P1 機車場',operator:'中興嘟嘟房（Google 別名：高鐵新竹5站）',lat:24.80806,lng:121.040415,walk:'距高鐵站約 11 公尺／不到 1 分',price:'10 元／小時；當日上限 100 元；前 30 分免費',monthly:'新竹縣官方停車場資料列「計時、月租」，但未公開資格、價格與名額',monthlyStatus:'listed',phone:'03-6118117',address:'高鐵七路 6 號 P1 機車場',covered:false,tags:['walk','hsr','monthly-unconfirmed'],source:'https://www.hsinchu.gov.tw/OpenDataDetail.aspx?n=902&s=271'},
+  {id:1,routeOrder:9,leg:'國泰世興 → P1：220 公尺／3 分',road:'沿高鐵東二路返回站體',station:'高鐵／六家',name:'嘟嘟房 高鐵新竹 P1 機車場',operator:'中興嘟嘟房（Google 別名：高鐵新竹5站）',lat:24.80806,lng:121.040415,walk:'距高鐵站約 11 公尺／不到 1 分',price:'10 元／小時；當日上限 100 元；前 30 分免費',monthly:'新竹縣官方停車場資料列「計時、月租」，但未公開資格、價格與名額',monthlyStatus:'listed',phone:'03-6118117',address:'高鐵七路 6 號 P1 機車場',covered:false,tags:['walk','hsr','monthly-unconfirmed'],source:'https://www.hsinchu.gov.tw/OpenDataDetail.aspx?n=902&s=271'},
   {id:2,routeOrder:1,leg:'高鐵站 → P2：450 公尺／6 分',road:'高鐵七路 → 光明六路東二段',station:'高鐵／六家',name:'嘟嘟房 高鐵新竹 P2 機車場',operator:'中興嘟嘟房（Google 別名：高鐵新竹4站）',lat:24.8103142,lng:121.0399859,walk:'距高鐵站約 450 公尺／6 分',price:'10 元／小時；當日上限 100 元；前 30 分免費',monthly:'新竹縣官方停車場資料列「計時、月租」，但未公開資格、價格與名額',monthlyStatus:'listed',phone:'03-6118117',address:'嘉祥六街 15 號',covered:false,tags:['walk','hsr','monthly-unconfirmed'],source:'https://www.hsinchu.gov.tw/OpenDataDetail.aspx?n=902&s=271'},
-  {id:3,routeOrder:5,leg:'五都二站 → 五都一站：270 公尺／4 分',road:'復興三路二段 → 高鐵七路',station:'高鐵／六家',name:'五都高鐵新竹一站',operator:'五都停車場',lat:24.806089,lng:121.0408881,walk:'距高鐵站約 260 公尺／4 分',price:'10 元／小時；平日上限 60、假日 80 元',monthly:'本場官方頁只列臨停，沒有列月租；不可視為已開放',monthlyStatus:'unknown',phone:'0983476666',address:'高鐵七路入口',covered:false,tags:['walk','hsr','monthly-unconfirmed','cheap'],source:'https://www.parkingnow168.com/product_d.php?id=28&lang=tw&tb=1'},
+  {id:3,routeOrder:7,leg:'城市高鐵一 → 五都一：170 公尺／2 分',road:'沿文興路二段往高鐵七路',station:'高鐵／六家',name:'五都高鐵新竹一站',operator:'五都停車場',lat:24.806089,lng:121.0408881,walk:'距高鐵站約 260 公尺／4 分',price:'10 元／小時；平日上限 60、假日 80 元',monthly:'本場官方頁只列臨停，沒有列月租；不可視為已開放',monthlyStatus:'unknown',phone:'0983476666',address:'高鐵七路入口',covered:false,tags:['walk','hsr','monthly-unconfirmed','cheap'],source:'https://www.parkingnow168.com/product_d.php?id=28&lang=tw&tb=1'},
   {id:4,routeOrder:4,leg:'六家站待辨識入口 → 五都二站：120 公尺／2 分',road:'沿文興路二段',station:'高鐵／六家',name:'五都高鐵新竹二站／正捷',operator:'五都停車場（正捷共址）',lat:24.806455,lng:121.038464,walk:'距高鐵站約 500 公尺／7 分',price:'10 元／小時；平日上限 60、假日 80 元',monthly:'本場官方頁只列臨停，沒有列月租；Google Maps 的「正捷」同址、同電話',monthlyStatus:'unknown',phone:'0918612222',address:'文興路二段／復興三路二段（文興路二段 208 號對面）',covered:false,tags:['walk','hsr','monthly-unconfirmed','cheap'],source:'https://www.parkingnow168.com/product_d.php?id=30&lang=tw&tb=1'},
   {id:5,routeOrder:2,leg:'P2 → 暐順／6+：550 公尺／8 分',road:'復興二路 → 復興三路二段 → 高鐵二路',station:'高鐵／六家',name:'城市車旅 暐順經貿大樓／6+ Plaza',operator:'城市車旅／暐順',lat:24.8076037,lng:121.0375617,walk:'距高鐵站約 750 公尺／10 分',price:'臨停 20 元／小時；當日上限 100 元；機車月票 900 元／月',monthly:'城市車旅官方頁未列員工限制，並寫明可來電購買；仍受現場名額影響',monthlyStatus:'public',phone:'0800208333',mobile:'0222462098',address:'復興三路二段 168 號 B1',covered:true,tags:['walk','hsr','public-monthly','covered'],source:'https://cityparking888.com/parking.php?area=287&city=64&country=1'},
-  {id:6,routeOrder:6,leg:'五都一站 → 國泰世興：240 公尺／3 分',road:'沿高鐵東二路',station:'高鐵／六家',name:'城市車旅 國泰竹北世興地下場',operator:'城市車旅',lat:24.80775,lng:121.04165,walk:'距高鐵站約 240 公尺／3 分',price:'機車 50 元／次；機車月票季繳 900 元',monthly:'城市車旅官方明定：僅限園區員工承租',monthlyStatus:'restricted',phone:'0800208333',mobile:'0222462098',address:'高鐵東二路 167 號',covered:true,tags:['walk','hsr','restricted-monthly','covered','cheap'],source:'https://cityparking888.com/parking.php?area=287&city=64&country=1&q=%E5%9C%8B%E6%B3%B0%E7%AB%B9%E5%8C%97%E4%B8%96%E8%88%88%E5%A4%A7%E6%A8%93%E7%AB%99%E5%9C%B0%E4%B8%8B'},
+  {id:6,routeOrder:8,leg:'五都一站 → 國泰世興：240 公尺／3 分',road:'沿高鐵東二路',station:'高鐵／六家',name:'城市車旅 國泰竹北世興地下場',operator:'城市車旅',lat:24.80775,lng:121.04165,walk:'距高鐵站約 240 公尺／3 分',price:'機車 50 元／次；機車月票季繳 900 元',monthly:'城市車旅官方明定：僅限園區員工承租',monthlyStatus:'restricted',phone:'0800208333',mobile:'0222462098',address:'高鐵東二路 167 號',covered:true,tags:['walk','hsr','restricted-monthly','covered','cheap'],source:'https://cityparking888.com/parking.php?area=287&city=64&country=1&q=%E5%9C%8B%E6%B3%B0%E7%AB%B9%E5%8C%97%E4%B8%96%E8%88%88%E5%A4%A7%E6%A8%93%E7%AB%99%E5%9C%B0%E4%B8%8B'},
   {id:11,routeOrder:3,leg:'暐順／6+ → 此入口：270 公尺／4 分',road:'沿復興三路二段',station:'高鐵／六家',name:'六家車站機車收費停車場（待現場辨識）',operator:'Google Maps 列同一支嘟嘟房電話',lat:24.8071315,lng:121.0391328,walk:'距高鐵站約 550 公尺／8 分',price:'網路沒有獨立官方費率；疑似嘟嘟房／六家站另一入口',monthly:'請現場確認它與 P1 是否為同一場、不同入口，避免重複計算',monthlyStatus:'unknown',phone:'036118117',address:'六家車站西南側、文興路二段附近',covered:false,tags:['walk','hsr'],source:'https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E5%AE%B6%E8%BB%8A%E7%AB%99%20%E6%A9%9F%E8%BB%8A%E6%94%B6%E8%B2%BB%E5%81%9C%E8%BB%8A%E5%A0%B4'},
-  {id:12,station:'高鐵／六家',name:'城市車旅 新竹高鐵二站（現場核對）',operator:'城市車旅',lat:24.805964,lng:121.039679,walk:'距高鐵站約 500 公尺／7 分',price:'官方目前只列汽車；2025 社群曾回報機車 50 元／日、一車一格',monthly:'官方頁未開放月票，機車區是否仍營運需現場確認',monthlyStatus:'unknown',verification:'unverified',phone:'0800208333',mobile:'0222462098',address:'文興路二段／高鐵五路',covered:false,tags:['hsr'],source:'https://cityparking888.com/parking.php?area=287&city=64&country=1'},
-  {id:13,station:'高鐵／六家',name:'城市車旅 新竹高鐵一站（現場核對）',operator:'城市車旅',lat:24.8054094,lng:121.039533,walk:'距高鐵站約 600 公尺／8 分',price:'Google Maps 有場址；沒有找到目前可停一般機車的官方費率',monthly:'不可當成已確認月租點；若到五都一／二站，可順路看入口公告',monthlyStatus:'unknown',verification:'unverified',phone:'0800208333',mobile:'0222462098',address:'文興路二段／高鐵五路南側',covered:false,tags:['hsr'],source:'https://cityparking888.com/parking.php?area=287&city=64&country=1'},
+  {id:12,routeOrder:5,leg:'五都二／正捷 → 城市高鐵二：140 公尺／2 分',road:'沿文興路二段往高鐵五路',station:'高鐵／六家',name:'城市車旅 新竹高鐵二站（現場核對）',operator:'城市車旅',lat:24.805964,lng:121.039679,walk:'距高鐵站約 500 公尺／7 分',price:'官方目前只列汽車；2025 社群曾回報機車 50 元／日、一車一格',monthly:'官方頁未開放月票，機車區是否仍營運需現場確認',monthlyStatus:'unknown',verification:'unverified',phone:'0800208333',mobile:'0222462098',address:'文興路二段／高鐵五路',covered:false,tags:['walk','hsr'],source:'https://cityparking888.com/parking.php?area=287&city=64&country=1'},
+  {id:13,routeOrder:6,leg:'城市高鐵二 → 城市高鐵一：65 公尺／1 分',road:'沿高鐵五路／文興路二段南行',station:'高鐵／六家',name:'城市車旅 新竹高鐵一站（含機車位）',operator:'城市車旅',lat:24.8054094,lng:121.039533,walk:'距高鐵站約 600 公尺／8 分',price:'合作停車清單明列「含機車位」；目前未找到機車官方費率',monthly:'城市車旅官方頁未列一般機車月票；現場確認臨停與承租條件',monthlyStatus:'unknown',verification:'partial',phone:'0800208333',mobile:'0222462098',address:'文興路二段 25 號',covered:false,tags:['walk','hsr'],source:'https://help.autopass.xyz/parking/common-issue-1/un'},
   {id:7,station:'高鐵／六家',name:'高鐵特區路邊機車收費格',operator:'新竹縣政府',lat:24.80820,lng:121.04100,walk:'各路段約 1–10 分',price:'週一至六 08:00–20:00：10 元／小時；每次當日上限 30 元；指定假日免費',monthly:'無月租；只能停畫設機車格且設有收費牌的位置',phone:'035527079',address:'高鐵二／七／八路、復興二／三路、嘉豐十一／嘉祥六街等公告路段',covered:false,tags:['hsr','cheap'],source:'https://hcpark.hchg.gov.tw/web/News/Detail?guid=8d6e29cd-b0ba-4140-8c45-a433f8a605b4'},
   {id:8,station:'高鐵外圍',name:'新竹臺大生醫醫院竹北院區（延伸路線）',operator:'新竹臺大分院',lat:24.80670,lng:121.04500,walk:'距高鐵站約 750 公尺／10 分；加入主路線約多 1.0 公里／14 分',price:'機車 20 元／次，隔日累加',monthly:'官方目前只公開臨停；社群曾提到月租，需向院方確認',phone:'036677600',address:'生醫路一段 2 號，院內平面機車場',covered:false,tags:['hsr','cheap'],source:'https://www.hch.gov.tw/?aid=60&iid=4&pid=156'},
   {id:9,station:'新莊站',name:'永發停車 新莊站高架下',operator:'永發停車',lat:24.78675,lng:121.01915,walk:'出站旁',price:'平日 30 元／日；假日 40 元／日',monthly:'由現場繳費機旁官方 LINE QR 詢問／辦理；現行月租價需確認',monthlyStatus:'unknown',phone:'',address:'關東路 208 巷 1 弄 56 號旁／新莊站高架下',covered:true,tags:['rail','monthly-unconfirmed','covered','cheap'],source:'https://www.google.com/maps/search/?api=1&query=%E6%B0%B8%E7%99%BC%E5%81%9C%E8%BB%8A+%E6%96%B0%E8%8E%8A%E7%AB%99'},
@@ -140,10 +156,15 @@ function render(f='all'){
   if(f==='walk') visible=visible.sort((a,b)=>a.routeOrder-b.routeOrder);
   document.querySelector('#shownCount').textContent=visible.length;
   document.querySelector('#cards').innerHTML=visible.map(p=>`<article class="card" id="place-${p.id}">
-    <h2>${f==='walk' ? p.routeOrder : p.id}. ${p.name}</h2><div class="meta">${p.operator}｜${p.station}｜${p.walk}</div>
-    ${p.leg?`<div class="meta"><strong>這一段：</strong>${p.leg}</div><div class="meta"><strong>走法：</strong>${p.road}</div>`:''}
-    <div class="meta">${p.address}</div><div class="price">${p.price}</div>
-    <div class="meta"><strong>承租：</strong>${p.monthly}</div>
+    <h2>${f==='walk' ? p.routeOrder : p.id}. ${p.name}</h2>
+    <table class="place-table"><tbody>
+      <tr><th>距車站</th><td>${p.walk}</td></tr>
+      ${p.leg?`<tr><th>這一段</th><td><span class="strong-ok">${p.leg}</span><br>${p.road}</td></tr>`:''}
+      <tr><th>業者</th><td>${p.operator}</td></tr>
+      <tr><th>地址</th><td>${p.address}</td></tr>
+      <tr><th>費率</th><td class="strong-ok">${p.price}</td></tr>
+      <tr><th>月租</th><td>${p.monthly}</td></tr>
+    </tbody></table>
     <div class="tags">${p.verification==='unverified'?'<span class="tag warn">現場核對／非已確認機車場</span>':''}${p.monthlyStatus==='public'?'<span class="tag">公開月租</span>':''}${p.monthlyStatus==='restricted'?'<span class="tag warn">僅限園區員工</span>':''}${p.monthlyStatus==='listed'?'<span class="tag warn">官方列月租／資格未載</span>':''}${p.monthlyStatus==='unknown'?'<span class="tag gray">本場月租未確認</span>':''}${p.covered?'<span class="tag">室內／遮雨</span>':'<span class="tag gray">露天</span>'}${p.tags.includes('cheap')?'<span class="tag">低日費</span>':''}</div>
     <div class="actions"><a href="${mapQuery(p)}" target="_blank">Google 導航</a>${p.phone?`<a href="tel:${p.phone}">撥 ${p.phone}</a>`:''}${p.mobile?`<a href="tel:${p.mobile}">手機撥 ${p.mobile}</a>`:''}<a href="${p.source}" target="_blank">資料來源</a></div>
   </article>`).join('');
@@ -159,7 +180,7 @@ function render(f='all'){
 document.querySelector('#filters').addEventListener('click',e=>{ if(!e.target.dataset.filter)return; document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('active',b===e.target)); render(e.target.dataset.filter); });
 document.querySelector('#cards').addEventListener('mouseenter',e=>{ const card=e.target.closest('.card'); if(!card)return; const p=places.find(x=>`place-${x.id}`===card.id); if(p) map.panTo([p.lat,p.lng]); },true);
 const station='24.808132,121.040499';
-const waypoints=['24.8103142,121.0399859','24.8076037,121.0375617','24.8071315,121.0391328','24.806455,121.038464','24.806089,121.0408881','新竹縣竹北市高鐵東二路167號','24.80806,121.040415'].join('|');
+const waypoints=['24.8103142,121.0399859','24.8076037,121.0375617','24.8071315,121.0391328','24.806455,121.038464','24.805964,121.039679','24.8054094,121.039533','24.806089,121.0408881','新竹縣竹北市高鐵東二路167號','24.80806,121.040415'].join('|');
 document.querySelector('#fullWalkRoute').href='https://www.google.com/maps/dir/?api=1&origin='+station+'&destination='+station+'&travelmode=walking&waypoints='+encodeURIComponent(waypoints);
 render('walk');
 </script>
